@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
 
     let num = Math.random() * 6;
@@ -25,6 +28,59 @@ function getHumanChoice(){
     }
 
     return 'invalid input';
+
+}
+
+function playRound(){
+
+    let humanChoise = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    if( humanChoise === computerChoice ){
+        //draw
+        console.log( 'draw' );
+    } else {
+
+        if( humanChoise === 'rock' ){
+
+            if( computerChoice === 'paper' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
+            }
+
+            if( computerChoice === 'scissors' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
+        }
+
+        if( humanChoise === 'paper' ){
+
+            if( computerChoice === 'scissors' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
+            }
+
+            if( computerChoice === 'rock' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
+        }
+
+        if( humanChoise === 'scissors' ){
+
+            if( computerChoice === 'rock' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
+            }
+
+            if( computerChoice === 'paper' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
+        }
+
+    }
 
 }
 
