@@ -84,6 +84,26 @@ function playRound(){
 
 }
 
+function playGame(){
+
+    for( i=0; i < 5; i++ ){
+        playRound();
+    }
+
+    if( humanScore === computerScore ){
+        console.log(`It's a draw, you both scored ${humanScore} each`);
+    }
+
+    if( humanScore > computerScore ){
+        console.log(`You win! You scored ${humanScore}, and the computer scored ${computerScore}`);
+    }
+
+    if( humanScore < computerScore ){
+        console.log(`You lose! You scored ${humanScore}, and the computer scored ${computerScore}`);
+    }
+
+}
+
 function runTest(rounds){
 
     let rock = 0;
