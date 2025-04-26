@@ -28,14 +28,13 @@ function getHumanChoice(){
 
 }
 
-function playGame(){
+function playGame(humanChoise){
 
     let humanScore = 0;
     let computerScore = 0;
 
     function playRound(){
-
-        let humanChoise = getHumanChoice();
+        console.log(humanChoise);
         let computerChoice = getComputerChoice();
 
         if( humanChoise === computerChoice ){
@@ -86,6 +85,8 @@ function playGame(){
 
     }
 
+    playRound();
+
     if( humanScore === computerScore ){
         console.log(`It's a draw, you both scored ${humanScore} each`);
     }
@@ -127,3 +128,14 @@ function runTest(rounds){
     console.log(`paper was returned     ${paper} times`);
     console.log(`scissor was returned   ${scissors} times`);
 }
+
+let buttons = document.querySelector('.buttons');
+
+buttons.addEventListener( 'click', (event) => {
+
+    const target = event.target;
+
+    const humanChoise = target.id
+
+    playGame( humanChoise );
+});
