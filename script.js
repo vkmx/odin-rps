@@ -34,7 +34,7 @@ function playGame(humanChoise){
     let computerScore = 0;
 
     function playRound(){
-        console.log(humanChoise);
+
         let computerChoice = getComputerChoice();
 
         if( humanChoise === computerChoice ){
@@ -101,33 +101,6 @@ function playGame(humanChoise){
 
 }
 
-function runTest(rounds){
-
-    let rock = 0;
-    let paper = 0;
-    let scissors = 0;
-
-    for( let i = 0; i < rounds; i++ ){
-        let choise = getComputerChoice();
-
-        if( choise === 'rock' ){
-            rock++;
-        }
-
-        if( choise === 'paper' ){
-            paper++;
-        }
-
-        if( choise === 'scissors' ){
-            scissors++;
-        }
-
-    }
-
-    console.log(`rock was returned      ${rock} times`);
-    console.log(`paper was returned     ${paper} times`);
-    console.log(`scissor was returned   ${scissors} times`);
-}
 
 let buttons = document.querySelector('.buttons');
 
