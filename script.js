@@ -86,10 +86,6 @@ function playGame(){
 
     }
 
-    for( i=0; i < 5; i++ ){
-        playRound();
-    }
-
     if( humanScore === computerScore ){
         console.log(`It's a draw, you both scored ${humanScore} each`);
     }
