@@ -6,7 +6,25 @@
 .flex {
     display: flex;
 }
+
 .content {
+    padding: 50px;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.score {
+    width: 100%;
+    padding: 30px;
+    justify-content: space-evenly;
+}
+
+.buttons {
+    padding: 30px;
+    list-style: none;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-evenly;
 }
