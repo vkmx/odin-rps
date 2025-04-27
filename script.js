@@ -28,81 +28,91 @@ function getHumanChoice(){
 
 }
 
-function playGame(humanChoise){
+function playRound(humanChoise){
 
-    let humanScore = 0;
-    let computerScore = 0;
+    let computerChoice = getComputerChoice();
 
-    function playRound(){
+    if( humanChoise === computerChoice ){
+        //draw
+        console.log( 'draw' );
+    } else {
 
-        let computerChoice = getComputerChoice();
+        if( humanChoise === 'rock' ){
 
-        if( humanChoise === computerChoice ){
-            //draw
-            console.log( 'draw' );
-        } else {
-
-            if( humanChoise === 'rock' ){
-
-                if( computerChoice === 'paper' ){
-                    console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
-                    computerScore++;
-                }
-
-                if( computerChoice === 'scissors' ){
-                    console.log( `You win, ${humanChoise} beats ${computerChoice}`);
-                    humanScore++;
-                }
+            if( computerChoice === 'paper' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
             }
 
-            if( humanChoise === 'paper' ){
+            if( computerChoice === 'scissors' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
+        }
 
-                if( computerChoice === 'scissors' ){
-                    console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
-                    computerScore++;
-                }
+        if( humanChoise === 'paper' ){
 
-                if( computerChoice === 'rock' ){
-                    console.log( `You win, ${humanChoise} beats ${computerChoice}`);
-                    humanScore++;
-                }
+            if( computerChoice === 'scissors' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
             }
 
-            if( humanChoise === 'scissors' ){
+            if( computerChoice === 'rock' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
+        }
 
-                if( computerChoice === 'rock' ){
-                    console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
-                    computerScore++;
-                }
+        if( humanChoise === 'scissors' ){
 
-                if( computerChoice === 'paper' ){
-                    console.log( `You win, ${humanChoise} beats ${computerChoice}`);
-                    humanScore++;
-                }
+            if( computerChoice === 'rock' ){
+                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                computerScore++;
             }
 
+            if( computerChoice === 'paper' ){
+                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                humanScore++;
+            }
         }
 
     }
 
-    playRound();
+}
+
+function updateScores(){
+    computerScoreDisplay.textContent = computerScore;
+    humanScoreDisplay.textContent = humanScore;
+}
+
+function playGame(humanChoise){
+
+
+    playRound(humanChoise);
+    updateScores();
 
     if( humanScore === computerScore ){
-        console.log(`It's a draw, you both scored ${humanScore} each`);
+        resultWindow.textContent = `It's a draw, you both scored ${humanScore} each`;
     }
 
     if( humanScore > computerScore ){
-        console.log(`You win! You scored ${humanScore}, and the computer scored ${computerScore}`);
+        resultWindow.textContent = `You win! You scored ${humanScore}, and the computer scored ${computerScore}`;
     }
 
     if( humanScore < computerScore ){
-        console.log(`You lose! You scored ${humanScore}, and the computer scored ${computerScore}`);
+        resultWindow.textContent = `You lose! You scored ${humanScore}, and the computer scored ${computerScore}`;
     }
 
 }
 
+let humanScore              = 0;
+let computerScore           = 0;
 
-let buttons = document.querySelector('.buttons');
+let resultWindow            = document.querySelector('.result')
+let computerScoreDisplay    = document.querySelector('.score .computer');
+let humanScoreDisplay       = document.querySelector('.score .user');
+
+let buttons                 = document.querySelector('.buttons');
 
 buttons.addEventListener( 'click', (event) => {
 
