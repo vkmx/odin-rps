@@ -35,54 +35,48 @@ function playRound(humanChoise){
     let message = '';
     let computerChoice = getComputerChoice();
 
-
-    if( humanChoise === computerChoice ){
-        //draw
-        console.log( 'draw' );
-    } else {
-
-        if( humanChoise === 'rock' ){
-
+    switch( humanChoise ){
+        case computerChoice:
+            message = `It's a draw, you both chose ${humanChoise}`;
+            break;
+        case 'rock':
             if( computerChoice === 'paper' ){
-                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                message = `You lost this round, ${computerChoice} beats ${humanChoise}`;
                 computerScore++;
             }
 
             if( computerChoice === 'scissors' ){
-                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                message = `You won this round, ${humanChoise} beats ${computerChoice}`;
                 humanScore++;
             }
-        }
-
-        if( humanChoise === 'paper' ){
-
+            break;
+        case 'paper':
             if( computerChoice === 'scissors' ){
-                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                message = `You lost this round, ${computerChoice} beats ${humanChoise}`;
                 computerScore++;
             }
 
             if( computerChoice === 'rock' ){
-                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                message = `You won this round, ${humanChoise} beats ${computerChoice}`;
                 humanScore++;
             }
-        }
-
-        if( humanChoise === 'scissors' ){
-
+            break;
+        case 'scissors':
             if( computerChoice === 'rock' ){
-                console.log( `You lose, ${computerChoice} beats ${humanChoise}`);
+                message = `You lost this round, ${computerChoice} beats ${humanChoise}`;
                 computerScore++;
             }
 
             if( computerChoice === 'paper' ){
-                console.log( `You win, ${humanChoise} beats ${computerChoice}`);
+                message = `You won this round, ${humanChoise} beats ${computerChoice}`;
                 humanScore++;
             }
-        }
+            break;
 
     }
 
-    //resultWindow.textContent = message;
+
+    gameResultDisplay.textContent = message;
 
 }
 
@@ -96,15 +90,15 @@ function displayWinner(){
     let message = '';
 
     if( humanScore === computerScore ){
-        message = `It's a draw, you both scored ${humanScore} each`;
+        message = `Game is a draw, you both scored ${humanScore} each`;
     }
 
     if( humanScore > computerScore ){
-        message = `You win! You scored ${humanScore}, and the computer scored ${computerScore}`;
+        message = `You won the game! You scored ${humanScore}, and the computer scored ${computerScore}`;
     }
 
     if( humanScore < computerScore ){
-        message = `You lose! You scored ${humanScore}, and the computer scored ${computerScore}`;
+        message = `You lost the game! You scored ${humanScore}, and the computer scored ${computerScore}`;
     }
 
     gameResultDisplay.textContent = message;
@@ -132,8 +126,7 @@ let rounds                  = 0;
 let humanScore              = 0;
 let computerScore           = 0;
 
-let gameResultDisplay       = document.querySelector('.result div:first-child')
-let roundResultDisplay      = document.querySelector('.result div:last-child')
+let gameResultDisplay       = document.querySelector('.result div:first-child');
 let computerScoreDisplay    = document.querySelector('.score .computer div:first-child');
 let humanScoreDisplay       = document.querySelector('.score .user div:first-child');
 
