@@ -109,8 +109,8 @@ let humanScore              = 0;
 let computerScore           = 0;
 
 let resultWindow            = document.querySelector('.result')
-let computerScoreDisplay    = document.querySelector('.score .computer');
-let humanScoreDisplay       = document.querySelector('.score .user');
+let computerScoreDisplay    = document.querySelector('.score .computer div:first-child');
+let humanScoreDisplay       = document.querySelector('.score .user div:first-child');
 
 let buttons                 = document.querySelector('.buttons');
 
