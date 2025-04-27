@@ -64,3 +64,11 @@
     color: #ffce5e;
     cursor: pointer;
 }
+
+.buttons button:hover {
+    background-color: #0a0231;
+}
+
+.buttons button:active {
+    color: #37FF0E;
+}
