@@ -30,7 +30,11 @@ function getHumanChoice(){
 
 function playRound(humanChoise){
 
+    rounds++;
+
+    let message = '';
     let computerChoice = getComputerChoice();
+
 
     if( humanChoise === computerChoice ){
         //draw
@@ -78,6 +82,8 @@ function playRound(humanChoise){
 
     }
 
+    //resultWindow.textContent = message;
+
 }
 
 function updateScores(){
@@ -85,30 +91,49 @@ function updateScores(){
     humanScoreDisplay.textContent = humanScore;
 }
 
-function playGame(humanChoise){
+function displayWinner(){
 
+    let message = '';
+
+    if( humanScore === computerScore ){
+        message = `It's a draw, you both scored ${humanScore} each`;
+    }
+
+    if( humanScore > computerScore ){
+        message = `You win! You scored ${humanScore}, and the computer scored ${computerScore}`;
+    }
+
+    if( humanScore < computerScore ){
+        message = `You lose! You scored ${humanScore}, and the computer scored ${computerScore}`;
+    }
+
+    gameResultDisplay.textContent = message;
+}
+
+function resetGame(){
+    rounds          = 0;
+    humanScore      = 0;
+    computerScore   = 0;
+}
+
+function playGame(humanChoise){
 
     playRound(humanChoise);
     updateScores();
 
-    if( humanScore === computerScore ){
-        resultWindow.textContent = `It's a draw, you both scored ${humanScore} each`;
-    }
-
-    if( humanScore > computerScore ){
-        resultWindow.textContent = `You win! You scored ${humanScore}, and the computer scored ${computerScore}`;
-    }
-
-    if( humanScore < computerScore ){
-        resultWindow.textContent = `You lose! You scored ${humanScore}, and the computer scored ${computerScore}`;
+    if( rounds === 5 ) {
+        displayWinner();
+        resetGame();
     }
 
 }
 
+let rounds                  = 0;
 let humanScore              = 0;
 let computerScore           = 0;
 
-let resultWindow            = document.querySelector('.result')
+let gameResultDisplay       = document.querySelector('.result div:first-child')
+let roundResultDisplay      = document.querySelector('.result div:last-child')
 let computerScoreDisplay    = document.querySelector('.score .computer div:first-child');
 let humanScoreDisplay       = document.querySelector('.score .user div:first-child');
 
